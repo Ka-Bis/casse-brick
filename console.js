@@ -11,7 +11,7 @@ let ballRadius = 10; // rayon du cercle en px
 
 // Deplacement de la balle
 let dx = 3; //angle nombre de frame par ms de l'axe X
-let dy = -4; //idem pour l'axe Y
+let dy = -2; //idem pour l'axe Y
 
 // variable paddle
 let paddleHeight = 10; // Hauteur de la raquette
@@ -100,7 +100,7 @@ function collisionDetection() {
             b.status = 0;
             score++;
             if(score == brickRowCount*brickColumnCount) {
-              alert("YOU WIN, CONGRATS!");
+              alert(`GAGNÉ! \t SCORE: ${score}`);
               document.location.reload();
             }
           }
@@ -113,10 +113,10 @@ function drawBall() {
     ctx.beginPath();
     ctx.arc(x, y, ballRadius, 0, Math.PI * 2); //rond de rayon 10px
     ctx.fillStyle = "#ff0000"; // on stocke la couleur du rond qui sera appelé par la methode fill()
-    // ctx.fillStyle = 'rgb('+
-    //                         Math.floor(Math.random()*255)+','+
-    //                         Math.floor(Math.random()*255)+','+
-    //                         Math.floor(Math.random()*255)+')';
+    ctx.fillStyle = 'rgb('+
+                            Math.floor(Math.random()*255)+','+
+                            Math.floor(Math.random()*255)+','+
+                            Math.floor(Math.random()*255)+')';
     ctx.fill();
     ctx.closePath();
 }
@@ -124,7 +124,7 @@ function drawBall() {
 function drawPaddle() {
     ctx.beginPath();
     ctx.rect(paddleX, paddleY, paddleWidth, paddleHeight);
-    ctx.fillStyle = "#0095DD";
+    ctx.fillStyle = "#563f1b";
     // ctx.fillStyle = 'rgb('+
     //                         Math.floor(Math.random()*255)+','+
     //                         Math.floor(Math.random()*255)+','+
@@ -174,13 +174,13 @@ function draw() {
     dy = -dy;
   }
   else if(y + dy > canvas.height-ballRadius) {
-    if(x > paddleX && x < paddleX + paddleWidth) {
+    if(x > paddleX && x < (paddleX + paddleWidth)+2) {
       dy = -dy;
     }
     else {
       lives--;
       if(!lives) {
-        alert("GAME OVER");
+        alert(`GAME OVER \t SCORE : ${score}`);
         document.location.reload();
         clearInterval(interval); // Needed for Chrome to end game
       }
