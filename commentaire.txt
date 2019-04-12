@@ -1,0 +1,34 @@
+function collisionDetection() { 
+    for(var c=0; c<brickColumnCount; c++) {
+        for(var r=0; r<brickRowCount; r++) {
+            var b = bricks[c][r];
+            if(b.status == 1) { // L.1
+                if(x > b.x && x < b.x+brickWidth && y > b.y && y < b.y+brickHeight) {
+                    dy = -dy;
+                    b.status = 0;
+                    score = score+20;
+                    if(score == brickRowCount*brickColumnCount) { //L .2
+                        alert("GAGNÉ !");
+                        document.location.reload();
+                        clearInterval(interval); // Needed for Chrome to end game
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* Si le centre de la balle se trouve à l'intérieur des coordonnées d'une de nos briques,
+ nous changerons la direction de la balle. Pour que le centre de la balle soit à l'intérieur de la brique, 
+les quatre affirmations suivantes doivent être vraies:
+
+La position x de la balle est supérieure à la position x de la brique.
+La position x de la balle est inférieure à la position x de la brique plus sa largeur.
+La position y de la balle est supérieure à la position y de la brique.
+La position y de la balle est inférieure à la position y de la brique plus sa hauteur.
+*/
+
+/* L.1-le status initiale des briques est de 1, si il y a collision => le status passe à 0 => les briques 
+s'enlevent*/
+
+/* L.2-  Si les briques ont tous disparus => Gagne*/

@@ -1,10 +1,24 @@
 *{
     padding: 0;
     margin:0;
+
+
 }
 
+body {
+    background-image: url(./image/landscape.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
 canvas {
-    background-color: pink;
+    /* background-color: pink; */
+    background-image: url(./image/spacenaute.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    /* height: 100%; */
     display: block;
     margin: 0 auto;
 }
