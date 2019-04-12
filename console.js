@@ -45,7 +45,7 @@ for(let c=0; c<brickColumnCount; c++) {
 let score = 0;
 
 //vie
-var lives = 2;
+var lives = 5;
 
 // Permet de savoir si les touche sont préssé ou pas => va declencher les boutons
 document.addEventListener("keydown",keyDownPressed,false);
